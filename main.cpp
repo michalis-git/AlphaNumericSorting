@@ -4,32 +4,6 @@
 #include <vector>
 #include <string>
 
-//test!!!
-int firstPartOfStringtoInt(const QString &s, bool &success) {
-  success = false;
-  QString num;
-  for(QChar c : s) {
-    if (c.isDigit() || c == '.' || c == '-') {
-      num.append(c);
-      success = true;
-    } else
-      break;
-  }
-  return num.toInt();
-}
-
-QString firstNonDigitPartOfString(const QString &s, bool &success) {
-  success = false;
-  QString part;
-  for(QChar c : s) {
-    if (!c.isDigit()) {
-      part.append(c);
-      success = true;
-    } else
-      break;
-  }
-  return part;
-}
 
 // has digits and then letters
 bool hasDigitsFirst(const QString &s, int &digits) {
