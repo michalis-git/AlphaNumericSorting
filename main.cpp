@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 
+//test!!!
 int firstPartOfStringtoInt(const QString &s, bool &success) {
   success = false;
   QString num;
