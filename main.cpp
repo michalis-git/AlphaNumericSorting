@@ -144,7 +144,7 @@ int main(int argc, char *argv[])
         return liDigits < riDigits;
     }
 
-//    return l < r;
+    return l < r;
   };
 
   std::sort(v.begin(), v.end(), numericCompare);
