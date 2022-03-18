@@ -105,50 +105,28 @@ int main(int argc, char *argv[])
 //             << "rHasLettersFirst: " << rHasLettersFirst << ", "
         ;
 
-//    //if both are mixed-digits-first
+
+    //if both are mixed-digits-first
     if (lHasDigitsFirst && rHasDigitsFirst) {
-//      qDebug() << l << r << "both have DIGITS first";
-      li = firstPartOfStringtoInt(l, lb);
-      ri = firstPartOfStringtoInt(r, rb);
+      //      qDebug() << l << r << "both have DIGITS first";
       // if numeric parts is equal then put the shorter string first
-      if (li == ri)
+      if (liDigits == riDigits)
         return l < r;
       // else put the smaller number first
       else
-        return li < ri;
+        return liDigits < riDigits;
     }
-    //if both are mixed-digits-first
-//    if (lHasDigitsFirst && rHasDigitsFirst) {
-//      //      qDebug() << l << r << "both have DIGITS first";
-//      // if numeric parts is equal then put the shorter string first
-//      if (liDigits == riDigits)
-//        return l < r;
-//      // else put the smaller number first
-//      else
-//        return liDigits < riDigits;
-//    }
 
     /***************** if both are mixed-letters-first *****************/
     else if (lHasLettersFirst && rHasLettersFirst) {
-      QString lt = firstNonDigitPartOfString(l, lb);
-      QString rt = firstNonDigitPartOfString(r, rb);
-//      qDebug() << l << r << "both have LETTERS first" << lt << rt;
-      if (lt == rt) {
-        return digitsAfterLettersToInt(lt, l) < digitsAfterLettersToInt(rt, r);
+      //      qDebug() << l << r << "both have LETTERS first" << lt << rt;
+      if (lLetters == rLetters) {
+        return digitsAfterLettersToInt(lLetters, l) < digitsAfterLettersToInt(rLetters, r);
       }
       // else put the smaller number first
       else
-        return li < ri;
+        return liDigits < riDigits;
     }
-//    else if (lHasLettersFirst && rHasLettersFirst) {
-//      //      qDebug() << l << r << "both have LETTERS first" << lt << rt;
-//      if (lLetters == rLetters) {
-//        return digitsAfterLettersToInt(lLetters, l) < digitsAfterLettersToInt(rLetters, r);
-//      }
-//      // else put the smaller number first
-//      else
-//        return liDigits < riDigits;
-//    }
 
 //    // if one is number and other mixed-letters-first
 //    else if ((lb && rHasLettersFirst) || (lHasLettersFirst && rb)) {
@@ -157,26 +135,14 @@ int main(int argc, char *argv[])
 
     // if one is number and other mixed-digits-first
     else if ((lb && rHasDigitsFirst) || (lHasDigitsFirst && rb)) {
-      li = firstPartOfStringtoInt(l, lb);
-      ri = firstPartOfStringtoInt(r, rb);
       qDebug() << l << r << "one is DIGITS and other has LETTERS first" << li << ri;
       // if numeric parts is equal then put the shorter string first
-      if (li == ri)
+      if (liDigits == riDigits)
         return l < r;
       // else put the smaller number first
       else
-        return li < ri;
+        return liDigits < riDigits;
     }
-//    // if one is number and other mixed-digits-first
-//    else if ((lb && rHasDigitsFirst) || (lHasDigitsFirst && rb)) {
-//      qDebug() << l << r << "one is DIGITS and other has LETTERS first" << li << ri;
-//      // if numeric parts is equal then put the shorter string first
-//      if (liDigits == riDigits)
-//        return l < r;
-//      // else put the smaller number first
-//      else
-//        return liDigits < riDigits;
-//    }
 
 //    return l < r;
   };
